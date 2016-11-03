@@ -25,8 +25,9 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = Place.where(zip: params[:id])
+    @place = Place.find_by(zip: params[:id])
     @place.destroy
+    render json: {"status": "deleted"}
   end
 
   private
